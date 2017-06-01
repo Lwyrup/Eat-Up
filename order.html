@@ -22,6 +22,7 @@
 		<tr>
             <td><select data-bind="options: $root.menuItems, value: item, optionsText: 'name'"></select></td>
             <td data-bind="text: formattedPrice"></td>
+            <td><a href="#" data-bind="click: $root.removeItem">Remove Item</a></td>
         </tr> 
 	</tbody>
 </table>
