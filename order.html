@@ -20,13 +20,13 @@
 	</thead>
 	<tbody data-bind="foreach: placedOrders">
 		<tr>
-            <td data-bind="text: name"></td>
-            <td data-bind="text: cost"></td>
+            <td><select data-bind="options: $root.menuItems, value: item, optionsText: 'name'"></select></td>
+            <td data-bind="text: formattedPrice"></td>
         </tr> 
 	</tbody>
 </table>
 
-<button>Add item</button>
+<button data-bind="click: addItem">Add item</button>
 
 
 </body>
