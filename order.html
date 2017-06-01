@@ -15,14 +15,18 @@
 	<thead>
 		<tr>
 			<th>Item</th>
-			<th>Quantity</th>
 			<th>Cost</th>
 		</tr>
 	</thead>
-	<tbody>
-		
+	<tbody data-bind="foreach: placedOrders">
+		<tr>
+            <td data-bind="text: name"></td>
+            <td data-bind="text: cost"></td>
+        </tr> 
 	</tbody>
 </table>
+
+<button>Add item</button>
 
 
 </body>
