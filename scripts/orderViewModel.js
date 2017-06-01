@@ -27,7 +27,7 @@ window.addEventListener("load",function(){
 			var total = 0;
 			for (var i = 0; i < self.placedOrders().length; i++){
 				currentItem = self.placedOrders()[i];
-				total += currentItem.item().cost * currentItem.count;
+				total += currentItem.item().cost * currentItem.count();
 			}
 			return total.toFixed(2);
 		});
@@ -37,7 +37,7 @@ window.addEventListener("load",function(){
 	function Order( orderItem, count = 1 ){
 		var self = this;
 		self.item = ko.observable( orderItem );
-		self.count = count;
+		self.count = ko.observable( count );
 
 		self.formattedPrice = ko.computed(function() {
 		    var cost = self.item().cost;
