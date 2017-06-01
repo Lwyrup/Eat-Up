@@ -22,7 +22,7 @@
 	<tbody data-bind="foreach: placedOrders">
 		<tr>
             <td><select data-bind="options: $root.menuItems, value: item, optionsText: 'name'"></select></td>
-            <td data-bind="text: count"></td>
+            <td><select data-bind="options: [1,2,3,4,5], value: count"></select></td>
             <td data-bind="text: formattedPrice"></td>
             <td><a href="#" data-bind="click: $root.removeItem">Remove Item</a></td>
         </tr> 
