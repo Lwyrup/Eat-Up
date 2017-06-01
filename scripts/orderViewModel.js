@@ -17,7 +17,7 @@ window.addEventListener("load",function(){
 		]);
 
 		self.addItem = function(){
-			self.placedOrders.push({name:"select", cost:"undefined"});
+			self.placedOrders.push( new Order(self.menuItems[0]) );
 		};
 	}
 
