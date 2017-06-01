@@ -15,20 +15,26 @@
 	<thead>
 		<tr>
 			<th>Item</th>
+			<th>Quantity</th>
 			<th>Cost</th>
 		</tr>
 	</thead>
 	<tbody data-bind="foreach: placedOrders">
 		<tr>
             <td><select data-bind="options: $root.menuItems, value: item, optionsText: 'name'"></select></td>
+            <td data-bind="text: count"></td>
             <td data-bind="text: formattedPrice"></td>
             <td><a href="#" data-bind="click: $root.removeItem">Remove Item</a></td>
         </tr> 
 	</tbody>
 </table>
 
-<p>Your total: $<span data-bind="text: $root.orderTotal"></span>
-<button data-bind="click: addItem">Add item</button>
+<p>
+	<span data-bind="visible: orderTotal() > 0">Your total: $
+		<span data-bind="text: orderTotal"></span>
+	</span>
+	<button data-bind="click: addItem">Add item</button>
+</p>
 
 
 </body>
