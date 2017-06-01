@@ -4,12 +4,32 @@ window.addEventListener("load",function(){
 	function OrdersViewModel(){
 		var self = this;
 
-		self.placedOrders = [{name: "Fries", cost: 2.90}];
+		// Non-editable data
 		self.menuItems = [
 			{name: "Fries", cost: 2.90},
 			{name: "Cheesesticks", cost: 5.69},
 			{name: "Onion Burger", cost: 6.99}
 		];
+
+		// Editable data
+		self.placedOrders = ko.observableArray([
+			new Order( self.menuItems[0] )
+		]);
+
+		self.addItem = function(){
+			self.placedOrders.push({name:"select", cost:"undefined"});
+		};
+	}
+
+	// Represents a row in the table
+	function Order( orderItem ){
+		var self = this;
+		self.item = ko.observable( orderItem );
+
+		self.formattedPrice = ko.computed(function() {
+		    var cost = self.item().cost;
+		    return cost ? "$" + cost.toFixed(2) : "None";        
+		}); 
 	}
 
 	ko.applyBindings( new OrdersViewModel());
