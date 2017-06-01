@@ -12,17 +12,7 @@ window.addEventListener("load",function(){
 		];
 
 		// Editable data
-		self.placedOrders = ko.observableArray([
-			new Order( self.menuItems[0] )
-		]);
-
-		self.orderTotal = ko.computed(function(){
-			var total = 0;
-			for (var i = 0; i < self.placedOrders().length; i++){
-				total += self.placedOrders()[i].item().cost;
-			}
-			return total.toFixed(2);
-		});
+		self.placedOrders = ko.observableArray([]);
 
 		// Operations
 		self.addItem = function(){
@@ -32,12 +22,22 @@ window.addEventListener("load",function(){
 		self.removeItem = function( placedOrder ){
 			self.placedOrders.remove( placedOrder );
 		}
+
+		self.orderTotal = ko.computed(function(){
+			var total = 0;
+			for (var i = 0; i < self.placedOrders().length; i++){
+				currentItem = self.placedOrders()[i];
+				total += currentItem.item().cost * currentItem.count;
+			}
+			return total.toFixed(2);
+		});
 	}
 
 	// Represents a row in the table
-	function Order( orderItem ){
+	function Order( orderItem, count = 1 ){
 		var self = this;
 		self.item = ko.observable( orderItem );
+		self.count = count;
 
 		self.formattedPrice = ko.computed(function() {
 		    var cost = self.item().cost;
