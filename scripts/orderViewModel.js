@@ -17,8 +17,12 @@ window.addEventListener("load",function(){
 		]);
 
 		self.addItem = function(){
-			self.placedOrders.push( new Order(self.menuItems[0]) );
+			self.placedOrders.push( new Order( self.menuItems[0] ));
 		};
+
+		self.removeItem = function( placedOrder ){
+			self.placedOrders.remove( placedOrder );
+		}
 	}
 
 	// Represents a row in the table
