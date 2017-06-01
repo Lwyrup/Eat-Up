@@ -16,6 +16,15 @@ window.addEventListener("load",function(){
 			new Order( self.menuItems[0] )
 		]);
 
+		self.orderTotal = ko.computed(function(){
+			var total = 0;
+			for (var i = 0; i < self.placedOrders().length; i++){
+				total += self.placedOrders()[i].item().cost;
+			}
+			return total.toFixed(2);
+		});
+
+		// Operations
 		self.addItem = function(){
 			self.placedOrders.push( new Order( self.menuItems[0] ));
 		};
